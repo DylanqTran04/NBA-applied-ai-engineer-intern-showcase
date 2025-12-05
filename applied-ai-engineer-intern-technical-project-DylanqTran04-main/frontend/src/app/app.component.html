@@ -1,0 +1,56 @@
+<div class="app-container">
+  <div class="header">
+    <h1>🏀 OKC AI Assistant</h1>
+  </div>
+
+  <div class="chat-container">
+    <div class="messages" #messagesContainer>
+      <div class="message-wrapper" *ngFor="let msg of messages" [ngClass]="msg.sender">
+        <div class="message-bubble">
+          <div class="message-text">{{ msg.text }}</div>
+          <div class="evidence" *ngIf="msg.evidence && msg.evidence.length > 0">
+            <div class="evidence-title">📊 Evidence:</div>
+            <div class="evidence-items">
+              <span *ngFor="let ev of msg.evidence" class="evidence-item" [title]="ev.table + ' #' + ev.id">
+                <span *ngIf="ev.date" class="evidence-date">{{ev.date}}</span>
+                <span *ngIf="ev.details">{{ev.details}}</span>
+                <span *ngIf="!ev.details">{{ev.table}} #{{ev.id}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="typing-indicator" *ngIf="isLoading">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>
+
+    <form (ngSubmit)="sendMessage()" class="input-area">
+      <input
+        [(ngModel)]="userInput"
+        name="userInput"
+        placeholder="Ask about NBA stats (e.g., 'How many points did Luka score on 1-26-24?')"
+        [disabled]="isLoading"
+      />
+      <button type="submit" [disabled]="isLoading || !userInput.trim()">
+        <span *ngIf="!isLoading">Send</span>
+        <span *ngIf="isLoading">...</span>
+      </button>
+    </form>
+
+    <div class="suggestions">
+      <div class="suggestion-label">💡 Try asking:</div>
+      <button
+        *ngFor="let suggestion of suggestions"
+        class="suggestion-btn"
+        (click)="useSuggestion(suggestion)"
+        [disabled]="isLoading"
+      >
+        {{suggestion}}
+      </button>
+    </div>
+  </div>
+</div>

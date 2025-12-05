@@ -1,0 +1,344 @@
+// OKC Thunder Colors
+$thunder-orange: #EF3B24;
+$thunder-blue: #007AC1;
+$thunder-yellow: #FDBB30;
+$thunder-dark: #002D62;
+$light-bg: #f8f9fa;
+$white: #ffffff;
+$gray: #6c757d;
+
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $thunder-dark 0%, $thunder-blue 100%);
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: $white;
+
+  h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .subtitle {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+}
+
+.chat-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: $white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: $light-bg;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thunder-blue;
+    border-radius: 4px;
+  }
+}
+
+.message-wrapper {
+  display: flex;
+  margin-bottom: 1rem;
+  animation: slideIn 0.3s ease-out;
+
+  &.user {
+    justify-content: flex-end;
+  }
+
+  &.bot {
+    justify-content: flex-start;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-bubble {
+  max-width: 75%;
+  padding: 1rem;
+  border-radius: 12px;
+  word-wrap: break-word;
+
+  .user & {
+    background: linear-gradient(135deg, $thunder-orange 0%, darken($thunder-orange, 10%) 100%);
+    color: $white;
+    border-bottom-right-radius: 4px;
+  }
+
+  .bot & {
+    background: $white;
+    border: 2px solid $thunder-blue;
+    color: #333;
+    border-bottom-left-radius: 4px;
+  }
+}
+
+.message-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.evidence {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+  .user & {
+    border-top-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .bot & {
+    border-top-color: rgba(0, 122, 193, 0.2);
+  }
+}
+
+.evidence-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.evidence-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.evidence-item {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  .user & {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .bot & {
+    background: rgba(0, 122, 193, 0.1);
+    color: $thunder-blue;
+    border-left: 3px solid $thunder-blue;
+  }
+}
+
+.evidence-date {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+
+  .user & {
+    background: rgba(255, 255, 255, 0.3);
+    color: $white;
+  }
+
+  .bot & {
+    background: $thunder-orange;
+    color: $white;
+  }
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  justify-content: flex-start;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background: $thunder-blue;
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.input-area {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: $white;
+  border-top: 2px solid $thunder-blue;
+
+  input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 24px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $thunder-blue;
+      box-shadow: 0 0 0 3px rgba(0, 122, 193, 0.1);
+    }
+
+    &:disabled {
+      background: #f5f5f5;
+      cursor: not-allowed;
+    }
+  }
+
+  button {
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, $thunder-orange 0%, darken($thunder-orange, 10%) 100%);
+    color: $white;
+    border: none;
+    border-radius: 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(239, 59, 36, 0.4);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+}
+
+.suggestions {
+  padding: 1rem 1.25rem;
+  background: $white;
+  border-top: 1px solid #e0e0e0;
+
+  .suggestion-label {
+    font-size: 0.875rem;
+    color: $gray;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.suggestion-btn {
+  padding: 0.5rem 1rem;
+  background: $light-bg;
+  border: 1px solid $thunder-blue;
+  border-radius: 16px;
+  color: $thunder-blue;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+
+  &:hover:not(:disabled) {
+    background: $thunder-blue;
+    color: $white;
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .chat-container {
+    height: 500px;
+  }
+
+  .message-bubble {
+    max-width: 85%;
+  }
+
+  .input-area {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+##### Part 3: Writeup
+
+Answer the questions listed in the Part 3 section of Submission Requirements. Do NOT use any AI tools for this section. Limit each response to 500 words or fewer.
+
+1. For my approach to parts 1 and 2, I first looked to clean the data, taking out null values or missing values if there were any. 
+I then began to ingest the data into PostgresSQL with pgvector, which generated embeddings for game summaries. 
+I found that the schema design was extremely important to ensure proper foreign key relationships between tables (games, players, teams, box scores) 
+while maintaining data integrity.I implemented a hybrid approach. For general queries, I used vector similarity search to find semantically relevant games.
+My prompts evolved significantly throughout experimentation. Initial attempts failed because the LLM lacked temporal context and misinterpreted relative date
+references. I added explicit date context (today's date, current season, and last season definitions). I continued to clarify data ordering games listed 
+chronologically, earliest first vs MOST RECENT first, and included warnings about data limitations (regular season only, no playoff data). 
+I also structured the context with clear sections GAMES and PLAYER STATS to help the LLM parse information systematically. 
+For Part 2, I built an Angular frontend Thunder-themed real-time chat with typing indicators, real-time responses, and evidence visualization. 
+Each response includes evidence tags showing the source data (game details or player box scores) with dates and opponent information. 
+I added suggestion buttons for common queries as well. During testing, I discovered 232 players in box scores weren't in the players table, 
+which I fixed by adding them with proper team assignments based on their most recent games. I also fixed 268 player-team mismatches where players 
+had been traded mid-season causing an error in my responses. Another challenge I faced during testing was an average NBA fan will refer to players 
+by their first name and or nicknames. At first the bot would only accept full exact names. 
+By including nickname mapping like sga →"Shai Gilgeous-Alexander" we can allow the bot to accept short names and nicknames like: “lebron”, “wemby”, etc.
+ 
+
+2. In my first two years of college, I attended the University of California Santa Cruz for Computer Science. While attending school I built my technical 
+skills through classes, coding clubs, as well as personal projects. I learned languages like typescript, C, html, Java, and Python. In my first year, 
+I participated in my first NBA fantasy league. It was a good way to make friends and made me look at the NBA in a more analytical way. 
+I credit a lot of my growth and interests to this first fantasy league of mine, as it curated my ability to communicate with my peers and my love for the game 
+of Basketball. In my third year I transferred to the University of California Santa Barbara to study Statistics and Data Science. 
+Here I learned how to create various models like regression models, random forest, etc. I have even made models for the nba and received great comments 
+from my professors! I believe that my technical skillset has helped me greatly throughout this assignment as I was able to deal with the data easily as well
+as program the necessary functions for this project. Some things I had to learn for this project was Docker Desktop as well as how to use Ollama. 
+I have used training sets before and fitted them through prediction models before, but learning to use Ollama and fine tuning the bot was my biggest obstacle. 
+Although it took the most amount of time, I found the more played around with the api the more familiar I became with it. 
+I understand that there is a lot to learn and I would hope to absorb as many lessons as I can from this position. 
+One specific goal I have by the end of the internship is to be able to develop and deploy machine learning models that translate complex in-game data 
+to attach to my responses.
+
+3. I would first explore the sub-possession data both spatially and temporally to find patterns in player movement and decision making. 
+Using the coordinates of the players and the ball, I would reconstruct each possession as a time series to visualize the spacing,
+ball actions, and ball movement dynamics. From here, I'd look to make functions like average offensive spacing, ball velocity, number 
+of passes per possession, and defensive proximity to shooters to quantify offensive flow and defensive pressure. I would then apply clustering 
+to identify offensive plays or defensive traps. For example, distinguishing between isolation, pick-and-roll, or drive-and-kick actions. 
+To answer in-game strategy questions, I would explore the data by using models to evaluate expected points per possession given player positions,
+which would help determine the effectiveness of different actions. For example whether a drive versus a pass is optimal against certain lineups. 
+Finally, I would visualize the data with heatmaps and movement trajectories to help communicate insights, like how spacing collapses when defenses 
+switch or how certain players can create high-value opportunities through off-ball gravity.
+
+
+4. Given skeletal tracking data with 29 keypoints per player at 60 Hz, I’d focus on translating raw motion data into interpretable, basketball-relevant metrics. 
+The goal would be to uncover physical, tactical, and coordination insights that can directly inform player development and in-game strategy. 
+First, I would explore the idea of an Explosiveness Index. Using a biomechanical feature, we can quantify a player’s lower body power by analyzing the vertical
+acceleration of the hips, ankles, and knees during cuts, drives, rebounds, etc. This metric could help assess fatigue, recovery, training progress, and more. 
+Second, I would explore the idea of a Defensive Reaction Time index. Using a temporal feature, we can measure the latency between an offensive event 
+(like a first dribble or a pump fake) and the defender’s initial movement in response based on the skeletal point vectors. 
+This could help evaluate the defenders’ anticipation and reaction consistency.
+This could also help decide whether a pump fake is “good” or not based on the defenders’ tracked actions.
+Third, I would explore a Team Spatial Synergy index. Using the tracking features we can compute a dynamic measure of how synchronized players are in terms of 
+spacing and motion. Using pairwise distances and angles between vectors, we can identify when teams maintain optimal spacing or will collapse under pressure.
+For implementation, I would use Python as my core language, using PyTorch to model skeletal time-series data. OpenCV would be useful for processing and 
+visualizing motion frames, while libraries like Matplotlib and Plotly could generate trajectory and heatmap visualizations. 
+I’d use scikit-learn for clustering, feature engineering, and dimensionality reduction. 
+
+
+5. To transform scouting reports, internal notes, and decision documents into actionable insights for Basketball Operations, I would design a natural language 
+processing system that converts unstructured text into structured, reliable information. The process would begin with automated ingestion using tools like 
+Airflow to extract and clean documents from various sources. Each file would be standardized, tagged with metadata such as player, team, and season, and 
+stored for downstream processing. I would divide the text into semantically meaningful sections and represent it using fine-tuned Sentence Transformer 
+embeddings to capture basketball-specific language about skills, tendencies, and constraints. These embeddings would be stored in a vector database such as 
+FAISS and paired with an Elasticsearch index for hybrid retrieval. Transformer-based NLP models would extract entities such as players and teams, along with 
+structured information like skill ratings or contract limitations, which could then be formatted into a consistent schema. Using a retrieval-augmented generation
+framework, I would combine retrieval and reasoning to synthesize insights from multiple reports. This approach could identify recurring strengths and weaknesses,
+evaluate player fit within specific systems, or flag potential risks based on medical or contractual notes. The extracted data would populate a feature store 
+containing player skill metrics, sentiment scores, and constraint indicators. Validation would involve both automated metrics, such as precision and recall, 
+and human-in-the-loop review to ensure quality. The final results would be delivered through secure APIs and interactive dashboards built in Tableau or Dash, 
+allowing analysts and coaches to explore key insights efficiently. This system would transform qualitative reports into structured intelligence that supports 
+faster, evidence-based decision-making across Basketball Operations.

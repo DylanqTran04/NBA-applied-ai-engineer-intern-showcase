@@ -1,0 +1,293 @@
+[
+  {
+    "id": 1,
+    "result": {
+      "points": 76,
+      "evidence": [
+        {
+          "table": "game_details",
+          "id": 22300272
+        },
+        {
+          "table": "game_details",
+          "id": 22300255
+        },
+        {
+          "table": "game_details",
+          "id": 22300257
+        },
+        {
+          "table": "game_details",
+          "id": 22301057
+        },
+        {
+          "table": "game_details",
+          "id": 22300635
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "result": {
+      "winner": "Thunder",
+      "score": "",
+      "evidence": [
+        {
+          "table": "game_details",
+          "id": 22400574
+        },
+        {
+          "table": "game_details",
+          "id": 22400681
+        },
+        {
+          "table": "game_details",
+          "id": 22400579
+        },
+        {
+          "table": "game_details",
+          "id": 22400583
+        },
+        {
+          "table": "game_details",
+          "id": 22400987
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "result": {
+      "winner": "Golden",
+      "score": "",
+      "evidence": [
+        {
+          "table": "game_details",
+          "id": 22300982
+        },
+        {
+          "table": "game_details",
+          "id": 22301030
+        },
+        {
+          "table": "game_details",
+          "id": 22300970
+        },
+        {
+          "table": "game_details",
+          "id": 22301042
+        },
+        {
+          "table": "game_details",
+          "id": 22300975
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "result": {
+      "player_name": "Luka Dončić",
+      "points": 2023,
+      "evidence": [
+        {
+          "table": "player_box_scores",
+          "id": 1626164
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1630578
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1629029
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1629014
+        },
+        {
+          "table": "player_box_scores",
+          "id": 203944
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "result": {
+      "player_name": "Luka Dončić",
+      "points": 2023,
+      "evidence": [
+        {
+          "table": "player_box_scores",
+          "id": 1629029
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1628983
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1630178
+        },
+        {
+          "table": "player_box_scores",
+          "id": 203076
+        },
+        {
+          "table": "player_box_scores",
+          "id": 203999
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "result": {
+      "player_name": "Shai Gilgeous-Alexander",
+      "points": 30,
+      "rebounds": 2024,
+      "assists": 7,
+      "evidence": [
+        {
+          "table": "player_box_scores",
+          "id": 1628983
+        },
+        {
+          "table": "player_box_scores",
+          "id": 203999
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1626181
+        },
+        {
+          "table": "player_box_scores",
+          "id": 201935
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1629627
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "result": {
+      "player_name": "Kyrie Irving",
+      "points": 1610612742,
+      "evidence": [
+        {
+          "table": "player_box_scores",
+          "id": 202681
+        },
+        {
+          "table": "player_box_scores",
+          "id": 203954
+        },
+        {
+          "table": "player_box_scores",
+          "id": 203954
+        },
+        {
+          "table": "player_box_scores",
+          "id": 203501
+        },
+        {
+          "table": "player_box_scores",
+          "id": 202331
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "result": {
+      "player_name": "Jamal Murray",
+      "points": 2,
+      "evidence": [
+        {
+          "table": "player_box_scores",
+          "id": 1627750
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1630178
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1629008
+        },
+        {
+          "table": "player_box_scores",
+          "id": 203999
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1628368
+        }
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "result": {
+      "player_name": "Trae Young",
+      "points": 25,
+      "evidence": [
+        {
+          "table": "player_box_scores",
+          "id": 1629029
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1630224
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1629027
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1630162
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1628983
+        }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "result": {
+      "player_name": "Shai Gilgeous-Alexander",
+      "points": 40,
+      "evidence": [
+        {
+          "table": "player_box_scores",
+          "id": 1630162
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1628983
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1629029
+        },
+        {
+          "table": "player_box_scores",
+          "id": 1628368
+        },
+        {
+          "table": "player_box_scores",
+          "id": 2544
+        }
+      ]
+    }
+  }
+]
